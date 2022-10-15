@@ -2,9 +2,12 @@ import React from "react";
 import { useState } from "react";
 
 const FormObject = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formValues, setFormValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const { username, password, email } = formValues;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,16 +17,10 @@ const FormObject = () => {
     username : ${username}
     email:${email},
     password:${password}`);
-
-    setUsername("");
-    setEmail("");
-    setPassword("");
   };
 
-  const handleUsername = (e) => {
-    console.log(e.target.value);
-    setUsername(e.target.value);
-  };
+  const handleForm = () => {};
+
   return (
     <form onSubmit={handleSubmit}>
       <h1 className="display-5 text-danger">FORM OBJECT</h1>
@@ -36,7 +33,7 @@ const FormObject = () => {
           className="form-control"
           id="username"
           value={username}
-          onChange={handleUsername}
+          onChange={handleForm}
         />
       </div>
 
@@ -49,7 +46,7 @@ const FormObject = () => {
           className="form-control"
           id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleForm}
         />
       </div>
 
@@ -62,7 +59,7 @@ const FormObject = () => {
           className="form-control"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleForm}
         />
       </div>
 
