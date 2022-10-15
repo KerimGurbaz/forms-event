@@ -7,6 +7,8 @@ const FormObject = () => {
     email: "",
     password: "",
   });
+
+  // destr
   const { username, password, email } = formValues;
 
   const handleSubmit = (e) => {
@@ -17,9 +19,19 @@ const FormObject = () => {
     username : ${username}
     email:${email},
     password:${password}`);
+
+    setFormValues({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
-  const handleForm = () => {};
+  const handleForm = (e) => {
+    console.log(e.target.value);
+    console.log(e.target.id);
+    setFormValues({ ...formValues, [e.target.id]: e.target.value });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
